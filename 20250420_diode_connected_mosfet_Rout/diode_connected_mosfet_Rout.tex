@@ -1,0 +1,52 @@
+\documentclass{article}
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan
+}
+\usepackage[american]{circuitikz}
+\usepackage{siunitx}
+\usepackage{amsmath}
+
+\begin{document}
+	\section*{Output Resistance($R_{out}$) of Diode Connected NMOS}
+	\subsection*{With channel length modulation ($\lambda=0$)}
+		$R_{out} = \frac{1}{gm}$
+		\subsubsection*{Using T Model}
+			\begin{center}
+				\begin{circuitikz}
+					\draw (0,0) node[ground]{} -- ++(0,1) to[V, l=$V_x$, invert] ++(0,1) to[short, l_=$S$,  i=$I_x$] ++(0,1) to[R, l=$\frac{1}{g_m}$] ++(0,2) -- ++(0,1) to[cisourceAM, l=$g_{m}V_{gs}$, invert] ++(0,2) -- ++(0,1) -- ++(1,0) -- ++(0,-1) node[ground]{};
+					\draw (0,8) -- ++(-2,0) -- ++(0,-2) to[short, f_=\mbox{$i=0$}] ++(2,0);
+					\draw (-2,6) node[left]{$G$};
+					\draw (0,9) node[left]{$D$};
+				\end{circuitikz}
+			\end{center}
+			\begin{gather*}
+				V_x=V_{sg}\\
+				I_x=g_mV_{gs}\\
+				\frac{V_x}{I_x}=R_{out}=\frac{V_{sg}}{-g_mV_{gs}}=\frac{1}{g_m}
+			\end{gather*}
+			When looking for output resistance, ground the input and apply test source at the output with $I_x$ going into the circuit under test. Gate is ground, and remember that there is no current flowing into gate!! this is really important reality.\\
+			\href{https://youtu.be/Z-Bmb3R4Ltw?feature=shared&t=625}{Useful Youtube video}
+		\subsubsection*{Using Hybrid $\pi$ Model}
+			\begin{center}
+				\begin{circuitikz}
+					\draw (0,0) node[ground]{} -- ++(0,1) to[V, l=$V_x$, invert] ++(0,1) -- ++(0,1) to[short, i=$I_x$] ++(1,0) -- ++(2,0) -- ++(0,1) to[cisourceAM, l=$g_{m}V_{gs}$, invert] ++(0,2) -- ++(0,1) to[short, l=$D$] ++(2,0) -- ++(0,-1) node[ground]{};
+					\draw (3,7) -- ++(-3,0) to[short, f_<=\mbox{$i=0$}] ++(-3,0) node[left]{$G$};
+					\draw (3,3) node[right]{$S$};
+					\draw (0,3) to[open, v<=$V_{gs}$] ++(0,4);
+				\end{circuitikz}
+			\end{center}
+			\begin{gather*}
+				V_x=V_{sd}=V_{sg}\\
+				I_x=g_mV_{gs}\\
+				\frac{V_x}{I_x}=R_{out}=\frac{V_{sg}}{-g_mV_{gs}}=\frac{1}{g_m}
+			\end{gather*}
+			Again remember there is not current coming from the gate node (into the gate oxide).
+	\subsection*{With channel length modulation ($\lambda \neq0$)}
+	I won't draw it out but should be able to work it out with both T and hybrid $\pi$ model and get the result $R_{out} = \frac{1}{r_o||\frac{1}{gm}}$.
+
+\end{document}
