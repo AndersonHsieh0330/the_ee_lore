@@ -1,0 +1,48 @@
+\documentclass{article}
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan
+}
+\usepackage[american]{circuitikz}
+\usepackage{siunitx}
+\usepackage{amsmath}
+
+\begin{document}
+	\section{Why is the pole frequency different than the numerical value pole in S domain?}
+	Say I have a one pole system
+	\[H(s)=\frac{1}{1+sRC}\]
+	The system is often written as
+	\[H(s)=\frac{1}{1+\frac{s}{\omega_p}}\]
+	where $\omega_p$ is the -3 \si{\decibel} frequency in \si{\radian/\second}.\\\\
+	The pole is at where the denominator = 0
+	\[1+sRC=0, s=-\frac{1}{RC}\]
+	but the -3 \si{\decibel} frequency $\omega_p$ is $\frac{1}{RC}$ and not $-\frac{1}{RC}$, why?\\\\
+	To find the -3 \si{\decibel}, we're interested in the \textbf{magnitude} of this transfer function
+	\[H(j\omega)=\frac{1}{1+j\omega RC}\]
+	and using the rule (proof and source : \href{URLhttps://math.stackexchange.com/questions/766841/is-this-a-valid-method-of-finding-magnitude-of-complex-fraction}{math.stackexchange}, \href{https://youtu.be/8NquqDYpqPw?feature=shared&t=237}{Youtube video})
+	\[\big|\frac{A}{B}\big|=\frac{\big|A\big|}{\big|B\big|}\]
+	we can find the frequency at where the magnitude drop by 3 \si{\decibel} $\left(\frac{1}{\sqrt{2}}=10^\frac{-3}{20}\right)$
+	\begin{align*}
+		\big|H(j\omega)\big|&=\frac{1}{\sqrt{1^2+\left(\omega RC\right)^2}}=\frac{1}{\sqrt{2}}\\
+		\omega&=\frac{1}{RC}=\omega_p
+	\end{align*}
+	\\ This is why we have the numerical number of the pole isn't quite the same as the -3 \si{\decibel} frequency. You can say that in 1 pole system
+	\[s=-\omega_p\]
+	
+	\section{Another Example with 2 Pole System}
+	Let
+	\[H(s)=\frac{1}{(1+5s)(1+7s)}\]
+	Poles are
+	\[s=-5, +7\]
+	and the pole frequencies are 
+	\begin{align*}
+		s_1=-\omega_{p1}=5\ \si{\radian\per\sec}\\
+		s_2=-\omega_{p2}=7\ \si{\radian\per\sec}
+	\end{align*}
+	Remember that conversion between Hz and $\si{\radian\per\sec}$ is
+	\[2\pi*f\ \si{\hertz} = \omega\ \si{\radian\per\sec}\]
+\end{document}
