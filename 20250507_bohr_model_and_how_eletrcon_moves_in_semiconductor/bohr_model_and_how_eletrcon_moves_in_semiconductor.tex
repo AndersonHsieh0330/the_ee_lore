@@ -8,11 +8,14 @@
 	urlcolor=cyan
 }
 \usepackage[american]{circuitikz}
+	\ctikzset{tripoles/mos style/arrows}
+	\ctikzset{transistors/arrow pos=end}
+	\ctikzset{label/align = straight}
 \usepackage{siunitx}
 \usepackage{amsmath}
 
 \begin{document}
-	This document explains from Bohr model of atoms to how a PN junction work, and focuses on building a mental model that helps understanding how electrons move in devices like diodes, MOSFETs and BJTs.
+	This document explains from Bohr model of atoms to how electrons and holes move within a semiconductor crystalline structure.
 	\section{Bohr Model and periodic table}
 		Useful Resource : \href{https://www.youtube.com/watch?v=OCTAQaubQ4o&ab_channel=WayneBreslyn%28Dr.B.%29}{Atomic Structure for Silicon Video}, \href{https://pubchem.ncbi.nlm.nih.gov/periodic-table/}{Periodic Table}\\\\
 		Quick review that Silicon's atomic number is 14, which means a neutral atom of silicon has 14 electrons. The horizontal count by rows on the periodic table means the number of electrons in each shell.
@@ -43,8 +46,9 @@
 	 		\item Arsenic(As, 33)
 	 		\item Antimony(Sb, 51)
 	 	\end{itemize}
-	 	We can see the positions of these elements relative to silicon's position on the periodic table. Acceptors to the left, donors to the left.
+	 	We can see the positions of these elements relative to silicon's position on the periodic table. Acceptors to the left, donors to the left. Note that due to reasons like thermal ionization and particle bombardment, the minority carriers are still there. For example, in N-type semiconductor material, there are still holes in the crystal. Vice versa for P-type semiconductor.
 	 \section{Electron \& Hole Movement and Conventional Current}
+	 	Useful Resource : \href{https://www.youtube.com/watch?v=QpqDBq9zxw4&ab_channel=NesoAcademy}{Electron vs Hole Flow Video}\\\\
 	 	Remember that conventional current is the opposite direction as the electron moving direction.\\
 	 	In P-type semiconductor, holes are the majority current carrier whereas in N-type semiconductor, electrons are the majority current carrier. In both types, the conventional current flow and electron flow directions are same. See the movement of electron in the following images:
 	 	\begin{center}
@@ -54,9 +58,27 @@
 	 	The \textcolor{orange}{orange label} are just indicators of electric field, showing that free electron flow is from left to right in both semiconductors. This shows that \textbf{conventional current in both semiconductors are from right to left}. Holes move in the same direction as conventional current.\\
 	 	\\
 	 	This is why the source terminal in N and P type MOSFETs are called source because they are the source of charge carriers
-	 	\begin{circuitikz}
-	 		%% draw p and nmos and indicate conventional current, electron and hole direction
-	 	\end{circuitikz}
+	 	\begin{center}
+	 		\begin{circuitikz}
+		 		\draw (0,0) node[nmos](M1){$M_{n1}$} 
+		 			(M1.S) to[short,l_=$S$] ++(0,-0.5) 
+		 			(M1.D) to[short,l^=$D$] +(0,0.5) 
+		 			(M1.G) to[short,l_=$G$] ++(-0.5,0);
+		 		\draw (0.5,1.5) to[open, v=$ $] (0.5,-1.5);
+		 		\draw (1,0.5) to[short, l^=$I_D$] (1,-0.5) node[currarrow, rotate=270]{};
+		 		\draw (2,0.5) node[currarrow, rotate=90]{} to[short, l^=$e^-$] (2,-0.5);
+		 		\draw (5,0) node[pmos](M2){$M_{p1}$} 
+		 			(M2.S) to[short,l^=$S$] ++(0,0.5) 
+		 			(M2.D) to[short,l_=$D$] +(0,-0.5) 
+		 			(M2.G) to[short,l_=$G$] ++(-0.5,0);
+		 		\draw (5.5,1.5) to[open, v=$ $] (5.5,-1.5);
+		 		\draw (6,0.5) to[short, l^=$I_D$] (6,-0.5) node[currarrow, rotate=270]{};
+		 		\draw (7,0.5) node[currarrow, rotate=90]{} to[short, l^=$e^-$] (7,-0.5);
+	 			%% draw p and nmos and indicate conventional current, electron and hole direction
+	 		\end{circuitikz}	
+	 	\end{center}
+
+	 	
 	 	
 	 	
 		
