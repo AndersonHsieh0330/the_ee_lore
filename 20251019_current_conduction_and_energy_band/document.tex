@@ -1,0 +1,75 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\setstretch{1.15}
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+
+\begin{document}
+	
+	\begin{center}
+		{\LARGE \textbf{Carrier Conduction in n-Type and p-Type Semiconductors}}\\[0.5em]
+		{\large Summary Notes for Semiconductor Physics}
+	\end{center}
+	\vspace{1em}
+	
+	\section{Overview}
+	Conduction in semiconductors arises from the movement of mobile charge carriers under an applied electric field:
+	\begin{itemize}
+		\item \textbf{n-type:} Majority carriers are electrons in the conduction band.
+		\item \textbf{p-type:} Majority carriers are holes in the valence band.
+	\end{itemize}
+	Although both mechanisms produce the same macroscopic effect---electric current---their microscopic details differ.
+	
+	\section{n-Type Conduction Mechanism}
+	\begin{itemize}
+		\item Donor atoms contribute free electrons to the \textbf{conduction band}.
+		\item These conduction-band electrons are \textbf{delocalized} and respond directly to the electric field.
+		\item When an electric field is applied, electrons drift opposite to the field direction, while current (conventional flow) is in the field direction.
+		\item The electrons remain entirely in the conduction band as they move; they do \emph{not} need to recombine with holes.
+		\item Recombination is negligible in n-type material because holes are extremely scarce.
+	\end{itemize}
+	
+	\section{p-Type Conduction Mechanism}
+	\begin{itemize}
+		\item Acceptor atoms create empty states (holes) near the top of the \textbf{valence band}.
+		\item The valence band is almost full, but a small number of electrons can move between neighboring atoms by filling nearby holes.
+		\item Each electron hop fills a hole and creates a new one in its previous location---the holes thus appear to drift in the direction of the electric field.
+		\item Electrons in p-type conduction remain \textbf{within the valence band} at all times; they never cross into the conduction band.
+		\item At the negative terminal, electrons from the external circuit enter the semiconductor and recombine with holes near that contact.
+		\item At the positive terminal, valence electrons are withdrawn, creating new holes to sustain the current flow.
+	\end{itemize}
+	
+	\section{Comparison of n-Type and p-Type Conduction}
+	\begin{table}[h!]
+		\centering
+		\renewcommand{\arraystretch}{1.2}
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			\textbf{Type} & \textbf{Majority Carriers} & \textbf{Band of Motion} & \textbf{Carrier Drift Direction} & \textbf{Contact Interaction} \\
+			\hline
+			n-type & Electrons & Conduction band & Opposite to electric field & Electrons supplied/removed via conduction band \\
+			\hline
+			p-type & Holes (valence electrons hopping) & Valence band & Same as electric field & Electrons recombine or are extracted at contacts \\
+			\hline
+		\end{tabular}
+		\caption{Comparison of carrier motion and contact behavior in n-type and p-type semiconductors.}
+	\end{table}
+	
+	\section{Conceptual Summary}
+	\begin{itemize}
+		\item In \textbf{n-type materials}, current is carried by electrons freely moving in the conduction band.
+		\item In \textbf{p-type materials}, current is carried by holes moving in the valence band---realized physically as valence electrons hopping between holes.
+		\item The external circuit continuously supplies and removes electrons at the contacts to maintain steady-state carrier motion.
+	\end{itemize}
+	
+	\noindent
+	\textbf{In one sentence:}  
+	Electrons in n-type semiconductors flow freely through the conduction band, while in p-type materials they remain in the valence band, hopping between holes whose drift constitutes the observed current.\\\\
+	n-type semicondcutor : newly supplied electrons from the negative side of the field always stays in conduction band\\
+	p-type semiconductor : newly supplied electrons from the negative side of the field hops between holes, which are in the valence band. so all the moving electrons are always in the valence band.
+	
+\end{document}
