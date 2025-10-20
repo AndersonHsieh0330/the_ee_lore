@@ -1,0 +1,80 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\setstretch{1.15}
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+
+\begin{document}
+	
+	\begin{center}
+		{\LARGE \textbf{Bandgap Formation and Atomic Origin: Summary Notes}}\\[0.5em]
+		{\large Compiled for Semiconductor Physics Review}
+	\end{center}
+	\vspace{1em}
+	
+	\section{From Atoms to Bands}
+	In isolated atoms, electrons occupy discrete energy levels (orbitals). When many atoms come together to form a solid, those discrete levels \textbf{split into bands} due to the Pauli exclusion principle.
+	
+	\begin{itemize}
+		\item The \textbf{valence band} arises from the bonding combinations of the outer (valence) orbitals.
+		\item The \textbf{conduction band} arises from the antibonding combinations of those same orbitals.
+		\item The \textbf{bandgap} ($E_g$) is the energy separation between these two bands.
+	\end{itemize}
+	
+	\section{Which Orbitals Form the Bands}
+	Only the \textbf{outermost (valence) electrons} contribute meaningfully to bonding and band formation.
+	
+	\begin{itemize}
+		\item Inner (core) electrons form deep, narrow ``core bands'' that remain inert and do not affect conduction.
+		\item Example materials:
+		\begin{itemize}
+			\item Silicon: valence orbitals $3s$, $3p \rightarrow sp^3$ hybrids $\Rightarrow E_g \approx 1.1\,\text{eV}$.
+			\item Germanium: valence orbitals $4s$, $4p \rightarrow sp^3$ hybrids $\Rightarrow E_g \approx 0.67\,\text{eV}$.
+		\end{itemize}
+	\end{itemize}
+	
+	\section{Why Bandgaps Differ Between Materials}
+	Different elements have valence electrons in different shells (different principal quantum numbers $n$).
+	
+	\begin{itemize}
+		\item Higher $n \Rightarrow$ orbitals are \textbf{larger and more diffuse}, lying farther from the nucleus.
+		\item Larger orbitals $\Rightarrow$ \textbf{weaker overlap} between neighboring atoms.
+		\item Weaker overlap $\Rightarrow$ smaller bonding--antibonding energy splitting $\Rightarrow$ smaller bandgap.
+	\end{itemize}
+	
+	\subsection*{Trend Example (Group IV Semiconductors)}
+	\[
+	\text{C (diamond)} \rightarrow \text{Si} \rightarrow \text{Ge} \rightarrow \text{Sn}
+	\]
+	\[
+	E_g: \; 5.5~\text{eV} \; \rightarrow \; 1.1~\text{eV} \; \rightarrow \; 0.67~\text{eV} \; \rightarrow \; \approx 0~\text{eV}
+	\]
+	
+	\section{About the Principal Quantum Number ($n$)}
+	The principal quantum number $n$ labels how far an orbital generally sits from the nucleus (its spatial extent).
+	
+	\begin{itemize}
+		\item Larger $n$ $\Rightarrow$ electrons are farther out, more weakly bound, and have higher energy.
+		\item Within a given $n$, subshells ($s$, $p$, $d$) differ in energy due to penetration and shielding effects.
+		\item In semiconductor physics, $n$ mainly identifies which orbitals form the \textbf{outermost, bonding-active shell}.
+	\end{itemize}
+	
+	\section{Higher Energy vs. Weaker Overlap}
+	\begin{itemize}
+		\item Orbitals with higher atomic energy (e.g., $4s$ vs.\ $3s$) are farther from the nucleus and more diffuse.
+		\item Diffuse orbitals overlap less effectively between neighboring atoms.
+		\item Less overlap $\Rightarrow$ weaker bonding interaction $\Rightarrow$ smaller bonding--antibonding splitting $\Rightarrow$ smaller bandgap.
+	\end{itemize}
+	
+	Thus, ``higher atomic energy'' and ``bonding strength'' trend in opposite directions.
+	
+	\section{Key Takeaway}
+	The valence and conduction bands in a semiconductor come from the bonding and antibonding combinations of the \textbf{outermost valence-shell orbitals}. Higher-$n$ orbitals are larger and overlap less strongly, so the bonding--antibonding energy splitting---and therefore the bandgap---\textbf{decreases} as you move down the periodic table.
+	
+\end{document}
