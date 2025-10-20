@@ -59,20 +59,46 @@
 		\includegraphics[width=0.75\linewidth]{donor_acceptor_level.png}
 		\caption{Energy levels of donors and acceptors (adapted from Chenming Hu). 
 			The donor electron initially occupies the donor level \(E_d\), located just below the conduction band edge \(E_c\). 
-			Ionizing the donor requires an energy \(E_c - E_d\) (the donor ionization energy) to lift this electron into the conduction band. 
+			Ionizing the donor requires an energy \(E_c - E_d\) to lift this electron into the conduction band. 
 			Similarly, an acceptor level \(E_a\) lies just above the valence band \(E_v\); before ionization, it can capture an electron from the valence band, leaving behind a mobile hole.}
 		\label{fig:donor_acceptor}
 	\end{figure}
+	
+	\section{Where Conduction Occurs}
+	A key distinction between n-type and p-type semiconductors is \textbf{which band} supports carrier motion:
+	\begin{itemize}
+		\item In \textbf{n-type} material, conduction occurs in the \textbf{conduction band}.\\
+		Donor electrons are easily excited from \(E_d\) to \(E_c\), where they move freely as conduction-band electrons.
+		\item In \textbf{p-type} material, conduction occurs in the \textbf{valence band}.\\
+		When an acceptor captures an electron from the valence band, it leaves a hole behind. 
+		That hole can move through the valence band as neighboring electrons fill it---the holes are the actual mobile charge carriers.
+	\end{itemize}
+	
+	\begin{table}[h!]
+		\centering
+		\renewcommand{\arraystretch}{1.2}
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			\textbf{Type} & \textbf{Dopant Atom} & \textbf{Energy Level} & \textbf{Carrier Type} & \textbf{Conduction Band} \\
+			\hline
+			n-type & Donor (e.g., P, As) & \(E_d\) just below \(E_c\) & Electrons & Conduction band \\
+			\hline
+			p-type & Acceptor (e.g., B, Al) & \(E_a\) just above \(E_v\) & Holes & Valence band \\
+			\hline
+		\end{tabular}
+		\caption{Comparison of n-type and p-type conduction mechanisms.}
+	\end{table}
 	
 	\section{Summary}
 	\begin{itemize}
 		\item \textbf{Donor level:} Shallow energy level introduced by a donor atom, typically \(E_d \approx 50\,\text{meV}\) below \(E_c\). The donor electron resides here \emph{before ionization}.
 		\item \textbf{Acceptor level:} Shallow energy level introduced by an acceptor atom, typically \(E_a \approx 50\,\text{meV}\) above \(E_v\). It represents the bound state of the captured electron before the hole is freed.
-		\item These shallow levels drastically increase carrier concentration without significantly disturbing the band structure.
+		\item In n-type semiconductors, conduction occurs through electrons in the conduction band.
+		\item In p-type semiconductors, conduction occurs through holes in the valence band.
 	\end{itemize}
 	
 	\noindent
 	\textbf{In one sentence:} 
-	Dopant atoms create shallow electronic states within the bandgap---just below \(E_c\) for donors or just above \(E_v\) for acceptors---and the small ionization energy ($\sim50$\,meV) is sufficient to free carriers into the conduction or valence bands.
+	Dopant atoms create shallow electronic states within the bandgap---just below \(E_c\) for donors or just above \(E_v\) for acceptors---and the small ionization energy ($\sim50$\,meV) frees carriers into their respective bands: electrons into the conduction band (n-type) and holes into the valence band (p-type).
 	
 \end{document}
