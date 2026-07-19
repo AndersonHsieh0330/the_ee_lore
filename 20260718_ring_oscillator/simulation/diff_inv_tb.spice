@@ -1,0 +1,47 @@
+** sch_path: /home/andersonhsieh/repos/projects/playground/diff_inv_tb.sch
+**.subckt diff_inv_tb
+x1 vin_n vin_p vout_n vout_p VDD GND diff_inv
+V1 VDD GND 1.2
+C1 vout_p GND 1f m=1
+C2 vout_n GND 1f m=1
+V2 net1 GND 0.6
+V5 vin GND PULSE(0 1.2 1n 10p 10p 1n 2020p)
+E1 net1 vin_n VOL=' 0.5*v(vin) '
+E2 vin_p net1 VOL=' 0.5*v(vin) '
+**** begin user architecture code
+
+.lib cornerMOSlv.lib mos_tt
+
+
+
+.param temp=127
+.control
+save all
+
+tran 5p 2020p
+write diff_inv_tran.raw
+.endc
+
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  diff_inv.sym # of pins=6
+** sym_path: /home/andersonhsieh/repos/projects/playground/diff_inv.sym
+** sch_path: /home/andersonhsieh/repos/projects/playground/diff_inv.sch
+.subckt diff_inv vin_n vin_p vout_n vout_p VDD GND
+*.opin vout_p
+*.iopin VDD
+*.iopin GND
+*.opin vout_n
+*.ipin vin_p
+*.ipin vin_n
+XM1 vout_p vin_n net1 net1 sg13_lv_nmos w=1.5u l=0.13u ng=1 m=1
+XM2 vout_n vin_p net1 net1 sg13_lv_nmos w=1.5u l=0.13u ng=1 m=1
+R1 VDD vout_p 1k m=1
+R2 VDD vout_n 1k m=1
+I0 net1 GND 1m
+.ends
+
+.GLOBAL GND
+.end
