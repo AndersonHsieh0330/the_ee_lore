@@ -1,0 +1,59 @@
+** sch_path: /home/andersonhsieh/repos/projects/the_ee_lore/20260719_tunnable_ring_oscillator/ro3_tb.sch
+**.subckt ro3_tb
+x1 out VDD GND ro3
+V1 VDD GND {Vtune}
+C1 out GND 1f m=1
+**** begin user architecture code
+
+.lib cornerMOSlv.lib mos_tt
+
+
+
+.param temp=127
+.param Vtune = 0
+.control
+
+let sweep_start = 0.1
+let sweep_stop = 1.2
+let sweep_step = 0.1
+let sweep_value = sweep_start
+
+while sweep_value <= sweep_stop
+	alterparam Vtune = $&sweep_value
+	reset
+
+	save v(out)
+	tran 5p 20n
+
+	linearize v(out)
+	set specwindow=blackman
+	fft v(out)
+	write ro3_tran_fft_{$&sweep_value}.raw v(out)
+
+	let sweep_value = sweep_value + sweep_step
+end
+.endc
+
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  ro3.sym # of pins=3
+** sym_path: /home/andersonhsieh/repos/projects/the_ee_lore/20260719_tunnable_ring_oscillator/ro3.sym
+** sch_path: /home/andersonhsieh/repos/projects/the_ee_lore/20260719_tunnable_ring_oscillator/ro3.sch
+.subckt ro3 out VDD GND
+*.opin out
+*.iopin VDD
+*.iopin GND
+XM1 net1 net2 GND GND sg13_lv_nmos w=0.15u l=0.13u ng=1 m=1
+XM2 net1 net2 VDD VDD sg13_lv_pmos w=0.3u l=0.13u ng=1 m=1
+XM3 net3 net1 GND GND sg13_lv_nmos w=0.15u l=0.13u ng=1 m=1
+XM4 net3 net1 VDD VDD sg13_lv_pmos w=0.3u l=0.13u ng=1 m=1
+XM5 net2 net3 GND GND sg13_lv_nmos w=0.15u l=0.13u ng=1 m=1
+XM6 net2 net3 VDD VDD sg13_lv_pmos w=0.3u l=0.13u ng=1 m=1
+XM7 out net2 GND GND sg13_lv_nmos w=0.15u l=0.13u ng=1 m=1
+XM8 out net2 VDD VDD sg13_lv_pmos w=0.3u l=0.13u ng=1 m=1
+.ends
+
+.GLOBAL GND
+.end

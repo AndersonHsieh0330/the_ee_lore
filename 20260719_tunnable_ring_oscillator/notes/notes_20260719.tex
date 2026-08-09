@@ -1,0 +1,52 @@
+\documentclass{article}
+
+\usepackage{graphicx}
+
+\title{Tuning Oscillator Frequency and Learning About Poles}
+\author{Anderson Hsieh}
+\date{July 19, 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Questions Answered}
+    \begin{enumerate}
+        \item How do I sweep a variable in xschem \& ngspice and run transient analysis for each value of such variable?\\
+        Do this :
+        \begin{verbatim}
+            .param temp=127
+            .param Vtune = 0
+            .control
+            
+            let sweep_start = 0.1 
+            let sweep_stop = 1.2
+            let sweep_step = 0.1
+            let sweep_value = sweep_start
+            
+            while sweep_value <= sweep_stop
+            	alterparam Vtune = $&sweep_value
+            	reset
+            	
+            	save v(out)
+            	tran 5p 20n
+            
+            	linearize v(out)
+            	set specwindow=blackman
+            	fft v(out)
+            	write ro3_tran_fft_{$&sweep_value}.raw v(out)
+            
+            	let sweep_value = sweep_value + sweep_step
+            end
+            .endc
+        \end{verbatim}
+    \end{enumerate}
+\section{Questions To Be Answered}
+    \begin{enumerate}
+        \item how do they tune VDD for ring oscillator in a real application?
+        \item poles and zeros in oscillators
+        \item current mirrors in differential ring oscillator
+    \end{enumerate}
+\section{Some Picture}
+    \includegraphics[width=\textwidth]{images/ro3_tb.png}
+\end{document}
